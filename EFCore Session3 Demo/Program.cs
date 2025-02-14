@@ -6,13 +6,41 @@ namespace EFCore_Session3_Demo
 {
     internal class Program
     {
-        private static readonly Models.CompanyDbContext dbContext;
+      
 
         static void Main(string[] args)
         {
-            using CompanyDbContext context = new CompanyDbContext();
+            #region Loading Navigational Properties
 
-          //  CompanyDbContextSeed.Seed(dbContext);
+            #region Example 01
+            //using CompanyDbContext context = new CompanyDbContext();
+
+            //var employee = (from E in dbContext.Employees
+            //               where E.Code == 1
+            //               select E).FirstOrDefault();
+            //if (employee is not null)
+            //{
+            //    Console.WriteLine($"Employee: {employee.Name}, Department: {employee.Department?.Name ?? "No Department"}");
+            //} 
+            #endregion
+
+            #region Example 02
+            //var department = (from D in dbContext.Departments
+            //                 where D.DeptId == 10
+            //                 select D).FirstOrDefault();
+
+            //if (department is not null )
+            //{
+            //    Console.WriteLine($"Department: Id = {department.DeptId}, Name = {department.Name}");
+
+            //    foreach(var employee in department.Employees)
+            //    {
+            //        Console.WriteLine($"....Employee: Code = {employee.Code}, Name = {employee.Name}");
+            //    }
+            //} 
+            #endregion
+
+            #endregion
         }
         internal class CompanyDbContext : DbContext, IDisposable
         {
