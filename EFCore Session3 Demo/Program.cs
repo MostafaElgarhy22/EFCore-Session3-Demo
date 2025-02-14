@@ -211,6 +211,15 @@ namespace EFCore_Session3_Demo
 
 #endregion
 
+#region View - Mapping
+// var Result = dbContext.EmployeesDepartmentsView;
+//
+//  foreach(var item in Result)
+//{
+//    Console.WriteLine($"Employee: {IThreadPoolWorkItem.EmployeeName}, Department: {item.DepartmentName}");
+//} 
+#endregion
+
 
 
 
