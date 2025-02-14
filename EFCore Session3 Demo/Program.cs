@@ -119,7 +119,37 @@ namespace EFCore_Session3_Demo
 
     #endregion
 
-   
+    #region LINQ - Join Operators [Join(), GroupJoing()]
+
+    #region Inner Join
+
+    //var Result = from D in dbContext.Departments
+    //             join E in dbContext.Employees
+    //             on D.DeptId equals E.DepartmentId
+    //             select new
+    //             {
+    //                 EmployeeId = E.Code,
+    //                 EmployeeName = E.Name,
+    //                 DepartmentId = D.DeptId,
+    //                 DepartmentName = D.Name,
+    //             };
+
+    // Result = dbContext.Departments.Join(dbContext.Employees,
+    //                                     D => D.DeptId,
+    //                                     E => E.DepartmenId
+    //                                     (D,E) => new
+    //                                     {
+    //                                         EmployeeId = E.Code,
+    //                                         EmployeeName = E.Name,
+    //                                         DepartmentId = D.DeptId,
+    //                                         DepartmentName = D.Name,
+    //                                     });
+
+    //      foreach(var item in Result)
+    //          Console.Writeline(); 
+    #endregion
+
+    #endregion
 
 }
 
