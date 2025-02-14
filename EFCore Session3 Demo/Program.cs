@@ -11,7 +11,7 @@ namespace EFCore_Session3_Demo
         static void Main(string[] args)
         {
 
-            #region Loading Navigational Properties
+ #region Loading Navigational Properties
             // using CompanyDbContext context = new CompanyDbContext();
             #region 1. Explicit Loading
 
@@ -95,7 +95,8 @@ namespace EFCore_Session3_Demo
 
         //    Console.WriteLine($"Employee: {employee.Name}, Department: {employee.Department?.Name ?? "No Department"}");
     }
-    #endregion
+}
+#endregion
 
 #region Example 02
 //var department = (from D in dbContext.Departments
@@ -171,8 +172,47 @@ namespace EFCore_Session3_Demo
 
 #endregion
 
+#region Left Outer Join
+
+#region Example 01
+//var Result = dbContext.Departments.GroupJoin(dbContext.Employees,
+//                                             D => D.DeptId,
+//                                             E => E.DepartmentId,
+//                                            (Department, Employee) => new
+//                                            {
+//                                                Department,
+//                                                Employee = Employees.DfaultEmpty()
+//                                            }).SelectMany(X => X.Employees, (X, Employee) => new {X.Depatment, Employee});
+
+//   foreach(var item in Result)
+//   {
+//        Console.WriteLine($"Department: Id = {item.Department.DeptId}, Name = {Item.Department.Name}");
+//   } 
+#endregion
 
 #endregion
+
+#region Cross Join
+
+//var Result = dbContext.Departments.GroupJoin(dbContext.Employees,
+//                                             D => D.DeptId,
+//                                             E => E.DepartmentId,
+//                                            (Department, Employee) => new
+//                                            {
+//                                                Employee = E,
+//                                                Department = D
+//                                            };
+
+//   foreach(var item in Result)
+//   {
+//        Console.WriteLine($"Department: Id = {item.Department.DeptId}, Name = {Item.Department.Name}");
+//   } 
+#endregion
+
+#endregion
+
+
+
 
 
 
