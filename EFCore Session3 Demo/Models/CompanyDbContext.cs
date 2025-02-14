@@ -18,7 +18,10 @@ namespace EFCore_Session3_Demo.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=Company;Trusted_Connection=True;");
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer("Server=.;Database=Company;Trusted_Connection=True;");
+
         }
 
         internal void SaveChanges()

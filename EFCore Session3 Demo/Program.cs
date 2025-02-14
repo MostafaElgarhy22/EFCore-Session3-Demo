@@ -10,10 +10,10 @@ namespace EFCore_Session3_Demo
 
         static void Main(string[] args)
         {
-            using CompanyDbContext context = new CompanyDbContext();
-            #region Loading Navigational Properties
 
-        #region 1. Explicit Loading
+            #region Loading Navigational Properties
+            // using CompanyDbContext context = new CompanyDbContext();
+            #region 1. Explicit Loading
 
 
             #region Example 01
@@ -82,23 +82,51 @@ namespace EFCore_Session3_Demo
         #endregion
         #endregion
 
-        #endregion
+        #region 3. Lazy Loading
+        #region Example 01
+
+
+        //var employee = (from E in dbContext.Employees
+        //                where E.Code == 1
+        //                select E).FirstOrDefault();
+        //if (employee is not null)
+        //{
+        //    DbContext.Entry(employee).Reference(nameof(Employee.Department)).Load(); // Loading Explicitly
+
+        //    Console.WriteLine($"Employee: {employee.Name}, Department: {employee.Department?.Name ?? "No Department"}");
     }
-    internal class CompanyDbContext : DbContext, IDisposable
-        {
-            public void Dispose()
-            {
-                // Dispose resources here
-            }
-        }
+    #endregion
 
-        internal class DbContext
-        {
-        }
+    #region Example 02
+    //var department = (from D in dbContext.Departments
+    //                 where D.DeptId == 10
+    //                 select D).FirstOrDefault();
 
-        
+    //if (department is not null )
+    //{
+    //    Console.WriteLine($"Department: Id = {department.DeptId}, Name = {department.Name}");
 
-    }
+    //    dbContext.Entry(department).Reference(nameof(Department.Employees)).Load(); // Loading Explicitly
+
+    //    foreach(var employee in department.Employees)
+    //    {
+    //        Console.WriteLine($"....Employee: Code = {employee.Code} Name = {employee.Name}");
+    //    }
+    //} 
+    #endregion
+
+    #endregion
+
+    #endregion
+
+   
+
+}
+
+
+
+
+
 
 
 
