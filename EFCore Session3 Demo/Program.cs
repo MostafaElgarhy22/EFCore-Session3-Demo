@@ -97,61 +97,84 @@ namespace EFCore_Session3_Demo
     }
     #endregion
 
-    #region Example 02
-    //var department = (from D in dbContext.Departments
-    //                 where D.DeptId == 10
-    //                 select D).FirstOrDefault();
+#region Example 02
+//var department = (from D in dbContext.Departments
+//                 where D.DeptId == 10
+//                 select D).FirstOrDefault();
 
-    //if (department is not null )
-    //{
-    //    Console.WriteLine($"Department: Id = {department.DeptId}, Name = {department.Name}");
+//if (department is not null )
+//{
+//    Console.WriteLine($"Department: Id = {department.DeptId}, Name = {department.Name}");
 
-    //    dbContext.Entry(department).Reference(nameof(Department.Employees)).Load(); // Loading Explicitly
+//    dbContext.Entry(department).Reference(nameof(Department.Employees)).Load(); // Loading Explicitly
 
-    //    foreach(var employee in department.Employees)
-    //    {
-    //        Console.WriteLine($"....Employee: Code = {employee.Code} Name = {employee.Name}");
-    //    }
-    //} 
-    #endregion
+//    foreach(var employee in department.Employees)
+//    {
+//        Console.WriteLine($"....Employee: Code = {employee.Code} Name = {employee.Name}");
+//    }
+//} 
+#endregion
 
-    #endregion
+#endregion
 
-    #endregion
+#endregion
 
-    #region LINQ - Join Operators [Join(), GroupJoing()]
+#region LINQ - Join Operators [Join(), GroupJoing()]
 
-    #region Inner Join
+#region Inner Join
 
-    //var Result = from D in dbContext.Departments
-    //             join E in dbContext.Employees
-    //             on D.DeptId equals E.DepartmentId
-    //             select new
-    //             {
-    //                 EmployeeId = E.Code,
-    //                 EmployeeName = E.Name,
-    //                 DepartmentId = D.DeptId,
-    //                 DepartmentName = D.Name,
-    //             };
+//var Result = from D in dbContext.Departments
+//             join E in dbContext.Employees
+//             on D.DeptId equals E.DepartmentId
+//             select new
+//             {
+//                 EmployeeId = E.Code,
+//                 EmployeeName = E.Name,
+//                 DepartmentId = D.DeptId,
+//                 DepartmentName = D.Name,
+//             };
 
-    // Result = dbContext.Departments.Join(dbContext.Employees,
-    //                                     D => D.DeptId,
-    //                                     E => E.DepartmenId
-    //                                     (D,E) => new
-    //                                     {
-    //                                         EmployeeId = E.Code,
-    //                                         EmployeeName = E.Name,
-    //                                         DepartmentId = D.DeptId,
-    //                                         DepartmentName = D.Name,
-    //                                     });
+// Result = dbContext.Departments.Join(dbContext.Employees,
+//                                     D => D.DeptId,
+//                                     E => E.DepartmenId
+//                                     (D,E) => new
+//                                     {
+//                                         EmployeeId = E.Code,
+//                                         EmployeeName = E.Name,
+//                                         DepartmentId = D.DeptId,
+//                                         DepartmentName = D.Name,
+//                                     });
 
-    //      foreach(var item in Result)
-    //          Console.Writeline(); 
-    #endregion
+//      foreach(var item in Result)
+//          Console.Writeline(); 
+#endregion
 
-    #endregion
+#region Group Join
 
-}
+//var Result = dbContext.Departments.GroupJoin(dbContext.Employees,
+//                                             D => D.DeptId,
+//                                             E => E.DepartmentId,
+//                                            (Department, Employee) => new
+//                                            {
+//                                                Department,
+//                                                Employee
+//                                            }).Where(X => X.Employees.Count() > 0);
+
+//   foreach(var item in Result)
+//   {
+//        Console.WriteLine($"Department: Id = {item.Department.DeptId}, Name = {Item.Department.Name}");
+//       foreach(var employee in item.Employees)
+//      {
+//         Console.WriteLine($".......Employee: Code = {employee.Code}, Name = {employee.Name}");
+//      }
+//   }
+
+#endregion
+
+
+#endregion
+
+
 
 
 
